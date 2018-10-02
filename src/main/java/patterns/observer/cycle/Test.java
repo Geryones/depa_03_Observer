@@ -13,7 +13,10 @@ public class Test {
 			public void update(Observable source, Object arg) {
 				System.out.println("someone changed the scrollbar value => adjust the color model");
 				Color current = model.getColor();
-				model.setColor(new Color((int)arg, current.getGreen(), current.getBlue()));
+				if (!current.equals(arg)){
+					model.setColor(new Color((int)arg, current.getGreen(), current.getBlue()));
+				}
+
 			}}
 		);
 		
