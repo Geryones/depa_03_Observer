@@ -17,8 +17,11 @@ public class RedScrollbar extends Observable implements Observer {
 
 	public void setValue(int value) {
 		System.out.println("RedScrollbar.setValue");
-		this.value = value;
-		this.notifyObservers(value);
+		if (this.value!=value){
+            this.value = value;
+            this.notifyObservers(value);
+        }
+
 
 	}
 
@@ -26,9 +29,7 @@ public class RedScrollbar extends Observable implements Observer {
 	public void update(Observable source, Object arg) {
 		System.out.println("model changed its color => adjust scrollbar value");
 		int newRedValue = ((Color)arg).getRed();
-		if (this.value != newRedValue){
-			setValue(newRedValue);
-		}
+		setValue(newRedValue);
 
 	}
 

@@ -15,7 +15,10 @@ public class ColorModel extends Observable {
 
 	public void setColor(Color color) {
 		System.out.println("ColorModel.setColorChanged");
-		this.color = color;
-		notifyObservers(color);
+		if(!this.color.equals(color)){
+			this.color = color;
+			notifyObservers(color);
+		}
+
 	}
 }
